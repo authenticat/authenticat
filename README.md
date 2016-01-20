@@ -16,7 +16,7 @@ Simply drop the router into an Express server and provide it with a connection t
 ```
 var app = require('express')();
 var mongoose = require('mongoose');
-var connection = mongoose.connect('mongodb://localhost/whatever');
+var connection = mongoose.createConnection('mongodb://localhost/whatever');
 var Authenticat = require('authenticat');
 var authenticat = new Authenticat(connection);
 
