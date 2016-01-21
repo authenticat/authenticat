@@ -61,6 +61,7 @@ describe('the authenticat router', function() {
             done();
           });
       });
+
     });
     describe('the signin route', function() {
       it('should return a token if correct username and password are sent', function(done) {
@@ -84,6 +85,7 @@ describe('the authenticat router', function() {
             expect(err).to.eql(null);
             expect(res).to.have.status(401);
             expect(res.body.msg).to.eql('username or password is incorrect');
+            expect(res.body.wrongPassOrUser).to.eql(true);
             done();
           });
       });

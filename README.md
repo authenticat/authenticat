@@ -16,7 +16,7 @@ Simply drop the router into an Express server and provide it with a connection t
 ```
 var app = require('express')();
 var mongoose = require('mongoose');
-var connection = mongoose.conncect('mongodb://localhost/whatever');
+var connection = mongoose.createConnection('mongodb://localhost/whatever');
 var Authenticat = require('authenticat');
 var authenticat = new Authenticat(connection);
 
@@ -51,6 +51,8 @@ Response:
 Method: **GET**
 
 Uses [http basic authentication](https://en.wikipedia.org/wiki/Basic_access_authentication) for sign-in. Returns a token if authentication is successful.
+
+**If the user name/password combination is incorrect (i.e. wrong password for the given username), the response object will contain a value set to true that can be used on the client side to notify the username/password combination is incorrect.**  ```res.data.wrongPassOrUser: true```
 
 Example (using superagent-cli and the server above):
  ```
